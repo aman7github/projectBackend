@@ -9,7 +9,7 @@ GiftCompanyRoute.post("/add",async(req,res)=>{
     try{
        const newcompany = new GiftCompanyModel(req.body)
        await newcompany.save()
-       //await GiftCompanyModel.insertMany(req.body.restaurants)
+      // await GiftCompanyModel.insertMany(req.body.giftcards)
        res.status(200).send({"msg":"new company added"})
 
 

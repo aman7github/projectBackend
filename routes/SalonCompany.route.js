@@ -9,7 +9,7 @@ SalonCompanyRoute.post("/add",async(req,res)=>{
     try{
        const newcompany = new SalonCompanyModel(req.body)
        await newcompany.save()
-       //await SalonCompanyModel.insertMany(req.body.restaurants)
+       //await SalonCompanyModel.insertMany(req.body.salon)
        res.status(200).send({"msg":"new company added"})
 
 

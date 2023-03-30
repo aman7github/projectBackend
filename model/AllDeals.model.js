@@ -1,12 +1,17 @@
 const mongoose = require("mongoose")
 
 const schema = mongoose.Schema({
-    "Title":String,
-    "valid on":String,
-    "valid for":String,
-    "timings":String,
-    "bought":String,
-    "userID":String
+            "Title": String,
+            "bought": String,
+            "discount": String,
+            "cancellation": String,
+            "originalprice":String,
+            "offerprice": String,
+            "taxes": String,
+            "validpeople":String,
+            "validdate":String,
+            "timings": String,
+            "userID":String
 },{
     versionKey:false
 })

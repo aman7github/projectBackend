@@ -77,11 +77,3 @@ module.exports={
 }
 
 
-
-// {
-//     "name":"aman",
-//     "email":"aman@gmail.com",
-//     "password":"aman",
-//     "age":27,
-//     "city":"lko"
-// }

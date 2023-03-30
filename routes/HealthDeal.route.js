@@ -10,7 +10,7 @@ HealthDealRoute.post("/add",async(req,res)=>{
     try{
        const newcompany = new HealthDealModel(req.body)
        await newcompany.save()
-       //await HealthDealModel.insertMany(req.body.restaurants)
+       // HealthDealModel.insertMany(req.body.healthDeals)
        res.status(200).send({"msg":"new company added"})
 
 

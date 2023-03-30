@@ -9,7 +9,7 @@ HealthCompanyRoute.post("/add",async(req,res)=>{
     try{
        const newcompany = new HealthCompanyModel(req.body)
        await newcompany.save()
-       //await HealthCompanyModel.insertMany(req.body.restaurants)
+       //await HealthCompanyModel.insertMany(req.body.health)
        res.status(200).send({"msg":"new company added"})
 
 

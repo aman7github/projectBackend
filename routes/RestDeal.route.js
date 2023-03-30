@@ -9,7 +9,7 @@ restDealRoute.post("/add",async(req,res)=>{
     try{
        const newcompany = new RestDealModel(req.body)
        await newcompany.save()
-       //await RestDealModel.insertMany(req.body.restaurants)
+       //await RestDealModel.insertMany(req.body.restuarantDeals)
        res.status(200).send({"msg":"new company added"})
 
 
