@@ -4,8 +4,8 @@ const schema = mongoose.Schema({
     "name":String,
     "email":String,
     "password":String,
-    "age":Number,
-    "city":String
+    "phone":Number,
+
 },{
     versionKey:false
 })
