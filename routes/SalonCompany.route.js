@@ -21,8 +21,37 @@ SalonCompanyRoute.post("/add",async(req,res)=>{
 
 SalonCompanyRoute.get("/get",async(req,res)=>{
 
+    const sort = req.query.sort
+    const order = req.query.order
+    const place = req.query.place
+  
+    var customsort;
+    if(sort=="originalprice"){
+     if(order=="asc"){
+       customsort={
+         "originalprice":-1
+       }
+     }else if(order=="desc"){
+         customsort={
+             "originalprice":1
+           }
+     }
+      
+    }else if(sort==undefined){
+        customsort={}
+    }
+
+    var customplace;
+    if(place==undefined){
+       customplace={}
+    }else{
+      customplace={
+         "place":place
+      }
+    }
+
     try{
-       const allcompany = await SalonCompanyModel.find()
+       const allcompany = await SalonCompanyModel.find(customplace).sort(customsort)
      
        res.status(200).send({"msg":allcompany})
 

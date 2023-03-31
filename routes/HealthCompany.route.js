@@ -20,9 +20,38 @@ HealthCompanyRoute.post("/add",async(req,res)=>{
 })
 
 HealthCompanyRoute.get("/get",async(req,res)=>{
+    const sort = req.query.sort
+    const order = req.query.order
+    const place = req.query.place
+  
+    var customsort;
+    if(sort=="originalprice"){
+     if(order=="asc"){
+       customsort={
+         "originalprice":-1
+       }
+     }else if(order=="desc"){
+         customsort={
+             "originalprice":1
+           }
+     }
+      
+    }else if(sort==undefined){
+        customsort={}
+    }
+   
+
+    var customplace;
+    if(place==undefined){
+       customplace={}
+    }else{
+      customplace={
+         "place":place
+      }
+    }
 
     try{
-       const allcompany = await HealthCompanyModel.find()
+       const allcompany = await HealthCompanyModel.find(customplace).sort(customsort)
      
        res.status(200).send({"msg":allcompany})
 

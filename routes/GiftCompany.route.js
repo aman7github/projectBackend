@@ -5,6 +5,7 @@ const {GiftCompanyModel}= require("../model/GiftCards.model")
 
 
 GiftCompanyRoute.post("/add",async(req,res)=>{
+    
 
     try{
        const newcompany = new GiftCompanyModel(req.body)
@@ -20,9 +21,37 @@ GiftCompanyRoute.post("/add",async(req,res)=>{
 })
 
 GiftCompanyRoute.get("/get",async(req,res)=>{
+    const sort = req.query.sort
+    const order = req.query.order
+    const place = req.query.place
+    var customsort;
+    if(sort=="originalprice"){
+     if(order=="asc"){
+       customsort={
+         "originalprice":-1
+       }
+     }else if(order=="desc"){
+         customsort={
+             "originalprice":1
+           }
+     }
+       
+    }else if(sort==undefined){
+      customsort={}
+    }
+
+    var customplace;
+    if(place==undefined){
+       customplace={}
+    }else{
+      customplace={
+         "place":place
+      }
+    }
+
 
     try{
-       const allcompany = await GiftCompanyModel.find()
+       const allcompany = await GiftCompanyModel.find(customplace).sort(customsort)
      
        res.status(200).send({"msg":allcompany})
 
