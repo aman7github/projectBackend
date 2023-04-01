@@ -11,7 +11,8 @@ const schema = mongoose.Schema({
 })
 
 const UserModel= mongoose.model("user",schema)
+const AdminModel= mongoose.model("admin",schema)
 
 module.exports={
-    UserModel
+    UserModel,AdminModel
 }

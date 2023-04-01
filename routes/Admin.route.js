@@ -1,15 +1,17 @@
+
 const express = require("express")
-const {UserModel} = require("../model/user.model")
-const approute = express.Router()
+const {AdminModel} = require("../model/user.model")
+const adminroute = express.Router()
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken")
 
-approute.post("/register",async(req,res)=>{
+
+adminroute.post("/register",async(req,res)=>{
 
     const {name,email,password,phone} = req.body
 
     try{
-    const user = await UserModel.find({email})
+    const user = await AdminModel.find({email})
     let count =0
     for(let k of user){
         if(k.email==email){
@@ -19,14 +21,14 @@ approute.post("/register",async(req,res)=>{
     }
     
     if(count!=0){
-        res.status(200).send({"msg":"user is allready registered, please login "})
+        res.status(200).send({"msg":"Admin is allready registered, please login "})
     }else{   
 
  
         bcrypt.hash(password, 5 , async(err, hash)=> {
-        const newuser = new UserModel({name,email,password:hash,phone})
+        const newuser = new AdminModel({name,email,password:hash,phone})
         await newuser.save()
-        res.status(200).send({"msg":"user registerd"})
+        res.status(200).send({"msg":"Admin registerd"})
     });
 }
 
@@ -38,16 +40,16 @@ approute.post("/register",async(req,res)=>{
 
 
 
-approute.post("/login",async(req,res)=>{
+adminroute.post("/login",async(req,res)=>{
 
 const {email,password} = req.body
 
 try{
 
-    const user = await UserModel.find({email})
+    const user = await AdminModel.find({email})
     bcrypt.compare(password,user[0].password, async(err,result)=>{
           if(result){
-            res.status(200).send({"msg":"user is logged in", "token": jwt.sign({"userID":user[0]._id},"batman")})
+            res.status(200).send({"msg":"Admin is logged in", "token": jwt.sign({"userID":user[0]._id},"batman")})
           }else{
             res.status(400).send({"msg":err.message})
           }
@@ -73,7 +75,7 @@ try{
 
 
 module.exports={
-    approute
+    adminroute
 }
 
 
