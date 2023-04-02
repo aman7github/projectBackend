@@ -12,6 +12,7 @@ const schema = mongoose.Schema({
             "validdate":String,
             "timings": String,
             "count":Number,
+            "price":Number,
             "userID":String
 },{
     versionKey:false
