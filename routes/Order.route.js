@@ -9,9 +9,9 @@ const {OrderModel}= require("../model/AllDeals.model")
 OrderRoute.post("/add",async(req,res)=>{
 
     try{
-       const newcompany = new OrderModel(req.body)
-       await newcompany.save()
-      // await OrderModel.insertMany(req.body)
+    //    const newcompany = new OrderModel(req.body)
+    //    await newcompany.save()
+       await OrderModel.insertMany(req.body)
        res.status(200).send({"msg":"new Order added"})
 
 

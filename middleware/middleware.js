@@ -12,9 +12,9 @@ if(token){
    console.log(token)
 if(decoded){
     console.log(decoded)
-    let user = req.body
-    for(let i=0;i<user.length;i++){
-        user[i].userID = decoded.userID
+    let order = req.body.user
+    for(let i=0;i<order.length;i++){
+        order[i].userID = decoded.userID
     }
 
     next()
