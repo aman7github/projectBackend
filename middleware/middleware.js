@@ -13,7 +13,7 @@ if(token){
 if(decoded){
     console.log(decoded)
     let order = req.body.user
-    for(let i=0;i<order.length;i++){
+    for(let i=0;i<order?.length;i++){
         order[i].userID = decoded.userID
     }
 
