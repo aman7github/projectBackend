@@ -29,11 +29,11 @@ SalonCompanyRoute.get("/get",async(req,res)=>{
     if(sort=="originalprice"){
      if(order=="asc"){
        customsort={
-         "originalprice":-1
+         "originalprice":1
        }
      }else if(order=="desc"){
          customsort={
-             "originalprice":1
+             "originalprice":-1
            }
      }
       

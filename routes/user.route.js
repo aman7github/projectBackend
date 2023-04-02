@@ -47,7 +47,7 @@ try{
     const user = await UserModel.find({email})
     bcrypt.compare(password,user[0].password, async(err,result)=>{
           if(result){
-            res.status(200).send({"msg":"user is logged in", "token": jwt.sign({"userID":user[0]._id},"batman")})
+            res.status(200).send({"msg":"user is logged in", "token": jwt.sign({"userID":user[0]._id},"batman"),"user":user})
           }else{
             res.status(400).send({"msg":err.message})
           }

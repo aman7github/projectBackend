@@ -11,6 +11,7 @@ const schema = mongoose.Schema({
             "validpeople":String,
             "validdate":String,
             "timings": String,
+            "count":Number,
             "userID":String
 },{
     versionKey:false
