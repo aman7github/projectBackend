@@ -49,6 +49,18 @@ approute.get("/get",async(req,res)=>{
 
 })
 
+approute.delete("/delete/:id",async(req,res)=>{
+  const {id} = req.params
+  try{
+     await UserModel.findByIdAndDelete({_id:id})
+    res.status(200).send({"msg": "user is deleted"})
+ 
+  }catch(err){
+     res.status(400).send({"msg":err.message})
+  }
+ 
+ })
+
 
 
 approute.post("/login",async(req,res)=>{
