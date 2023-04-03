@@ -36,6 +36,19 @@ approute.post("/register",async(req,res)=>{
     
 })
 
+approute.get("/get",async(req,res)=>{
+
+ try{
+
+   const allusers = await UserModel.find()
+   res.status(200).send({"msg": allusers})
+
+ }catch(err){
+    res.status(400).send({"msg":err.message})
+ }
+
+})
+
 
 
 approute.post("/login",async(req,res)=>{
