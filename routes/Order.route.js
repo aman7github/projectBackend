@@ -24,8 +24,6 @@ OrderRoute.post("/add",async(req,res)=>{
 OrderRoute.get("/get",async(req,res)=>{
       
     const token = req.headers.authorization
-
-
     try{
       if(token){
        
@@ -34,7 +32,7 @@ OrderRoute.get("/get",async(req,res)=>{
             const allcompany = await OrderModel.find({userID:decoded.userID})
             res.status(200).send({"msg":allcompany})
         }else{
-            res.status(400).send({"msg":"userID is not found"})
+            res.status(400).send({"msg":"user is not found"})
         }
 
       }else{
